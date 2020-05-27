@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e37359eea3114e7786821808930f01d8" Name="Diagram1">
+        <EntityTypeShape EntityType="GreenMallModel.Administrators" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Billinfo" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Goodstype" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Orderinfo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Recordsinfo" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Shopinginfo" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenMallModel.Useerinfo" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <AssociationConnector Association="GreenMallModel.FK__Orderinfo__Manag__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="GreenMallModel.FK__Billinfo__OrderI__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="GreenMallModel.FK__Goodstype__Pid__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="GreenMallModel.FK__Shopingin__TyIpe__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="GreenMallModel.FK__Orderinfo__Goods__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="GreenMallModel.FK__Orderinfo__UserI__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GreenMallModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrators">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManagerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Managernumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Managerloginnuber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManagerrPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManagerEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Managerphoto" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Billinfo">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="BusinessPrice" Type="money" />
+    <Property Name="Profits" Type="money" />
+  </EntityType>
+  <EntityType Name="Goodstype">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Typename" Type="nvarchar" MaxLength="150" />
+    <Property Name="Pid" Type="int" />
+  </EntityType>
+  <EntityType Name="Orderinfo">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="GoodsID" Type="int" />
+    <Property Name="ManagerID" Type="int" />
+    <Property Name="Ordertime" Type="datetime" Nullable="false" />
+    <Property Name="Oderstate" Type="int" Nullable="false" />
+    <Property Name="Payable" Type="money" />
+    <Property Name="Hnrb" Type="money" />
+    <Property Name="Tobepaid" Type="money" />
+    <Property Name="Paymentmethod" Type="nvarchar" MaxLength="10" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Recordsinfo">
+    <Key>
+      <PropertyRef Name="Merchantsid" />
+    </Key>
+    <Property Name="Merchantsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MerchantsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MerchantsType" Type="int" />
+    <Property Name="MerchantsPhon" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MerPlantingShoping" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shopinginfo">
+    <Key>
+      <PropertyRef Name="GoodsID" />
+    </Key>
+    <Property Name="GoodsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GoodsPicLarge" Type="nvarchar" MaxLength="150" />
+    <Property Name="GoodsPPicSmall" Type="nvarchar" MaxLength="150" />
+    <Property Name="GoodsVideo" Type="nvarchar" MaxLength="150" />
+    <Property Name="TyIpeD" Type="int" />
+    <Property Name="AddTime" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="money" />
+  </EntityType>
+  <EntityType Name="Useerinfo">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usernumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Userloginnuber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Userphoto" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Billinfo__OrderI__1ED998B2">
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="0..1" />
+    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orderinfo">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Billinfo">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goodstype__Pid__145C0A3F">
+    <End Role="Goodstype" Type="Self.Goodstype" Multiplicity="0..1" />
+    <End Role="Goodstype1" Type="Self.Goodstype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goodstype">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Goodstype1">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderinfo__Goods__1B0907CE">
+    <End Role="Shopinginfo" Type="Self.Shopinginfo" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shopinginfo">
+        <PropertyRef Name="GoodsID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="GoodsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderinfo__Manag__1BFD2C07">
+    <End Role="Administrators" Type="Self.Administrators" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrators">
+        <PropertyRef Name="ManagerID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderinfo__UserI__1A14E395">
+    <End Role="Useerinfo" Type="Self.Useerinfo" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Useerinfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Shopingin__TyIpe__173876EA">
+    <End Role="Goodstype" Type="Self.Goodstype" Multiplicity="0..1" />
+    <End Role="Shopinginfo" Type="Self.Shopinginfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goodstype">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Shopinginfo">
+        <PropertyRef Name="TyIpeD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GreenMallModelStoreContainer">
+    <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Billinfo" EntityType="Self.Billinfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goodstype" EntityType="Self.Goodstype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orderinfo" EntityType="Self.Orderinfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recordsinfo" EntityType="Self.Recordsinfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shopinginfo" EntityType="Self.Shopinginfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Useerinfo" EntityType="Self.Useerinfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Billinfo__OrderI__1ED998B2" Association="Self.FK__Billinfo__OrderI__1ED998B2">
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+      <End Role="Billinfo" EntitySet="Billinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goodstype__Pid__145C0A3F" Association="Self.FK__Goodstype__Pid__145C0A3F">
+      <End Role="Goodstype" EntitySet="Goodstype" />
+      <End Role="Goodstype1" EntitySet="Goodstype" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderinfo__Goods__1B0907CE" Association="Self.FK__Orderinfo__Goods__1B0907CE">
+      <End Role="Shopinginfo" EntitySet="Shopinginfo" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderinfo__Manag__1BFD2C07" Association="Self.FK__Orderinfo__Manag__1BFD2C07">
+      <End Role="Administrators" EntitySet="Administrators" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderinfo__UserI__1A14E395" Association="Self.FK__Orderinfo__UserI__1A14E395">
+      <End Role="Useerinfo" EntitySet="Useerinfo" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Shopingin__TyIpe__173876EA" Association="Self.FK__Shopingin__TyIpe__173876EA">
+      <End Role="Goodstype" EntitySet="Goodstype" />
+      <End Role="Shopinginfo" EntitySet="Shopinginfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

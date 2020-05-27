@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GreenMallModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrators">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManagerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Managernumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Managerloginnuber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ManagerrPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ManagerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Managerphoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orderinfo" Relationship="Self.FK__Orderinfo__Manag__1BFD2C07" FromRole="Administrators" ToRole="Orderinfo" />
+  </EntityType>
+  <EntityType Name="Billinfo">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="BusinessPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Profits" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Orderinfo" Relationship="Self.FK__Billinfo__OrderI__1ED998B2" FromRole="Billinfo" ToRole="Orderinfo" />
+  </EntityType>
+  <EntityType Name="Goodstype">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Typename" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Pid" Type="Int32" />
+    <NavigationProperty Name="Goodstype1" Relationship="Self.FK__Goodstype__Pid__145C0A3F" FromRole="Goodstype" ToRole="Goodstype1" />
+    <NavigationProperty Name="Goodstype2" Relationship="Self.FK__Goodstype__Pid__145C0A3F" FromRole="Goodstype1" ToRole="Goodstype" />
+    <NavigationProperty Name="Shopinginfo" Relationship="Self.FK__Shopingin__TyIpe__173876EA" FromRole="Goodstype" ToRole="Shopinginfo" />
+  </EntityType>
+  <EntityType Name="Orderinfo">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="GoodsID" Type="Int32" />
+    <Property Name="ManagerID" Type="Int32" />
+    <Property Name="Ordertime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Oderstate" Type="Int32" Nullable="false" />
+    <Property Name="Payable" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Hnrb" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Tobepaid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Paymentmethod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Administrators" Relationship="Self.FK__Orderinfo__Manag__1BFD2C07" FromRole="Orderinfo" ToRole="Administrators" />
+    <NavigationProperty Name="Billinfo" Relationship="Self.FK__Billinfo__OrderI__1ED998B2" FromRole="Orderinfo" ToRole="Billinfo" />
+    <NavigationProperty Name="Shopinginfo" Relationship="Self.FK__Orderinfo__Goods__1B0907CE" FromRole="Orderinfo" ToRole="Shopinginfo" />
+    <NavigationProperty Name="Useerinfo" Relationship="Self.FK__Orderinfo__UserI__1A14E395" FromRole="Orderinfo" ToRole="Useerinfo" />
+  </EntityType>
+  <EntityType Name="Recordsinfo">
+    <Key>
+      <PropertyRef Name="Merchantsid" />
+    </Key>
+    <Property Name="Merchantsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MerchantsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MerchantsType" Type="Int32" />
+    <Property Name="MerchantsPhon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MerPlantingShoping" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shopinginfo">
+    <Key>
+      <PropertyRef Name="GoodsID" />
+    </Key>
+    <Property Name="GoodsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GoodsPicLarge" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="GoodsPPicSmall" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="GoodsVideo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TyIpeD" Type="Int32" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Goodstype" Relationship="Self.FK__Shopingin__TyIpe__173876EA" FromRole="Shopinginfo" ToRole="Goodstype" />
+    <NavigationProperty Name="Orderinfo" Relationship="Self.FK__Orderinfo__Goods__1B0907CE" FromRole="Shopinginfo" ToRole="Orderinfo" />
+  </EntityType>
+  <EntityType Name="Useerinfo">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Usernumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Userloginnuber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Userphoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orderinfo" Relationship="Self.FK__Orderinfo__UserI__1A14E395" FromRole="Useerinfo" ToRole="Orderinfo" />
+  </EntityType>
+  <Association Name="FK__Orderinfo__Manag__1BFD2C07">
+    <End Role="Administrators" Type="Self.Administrators" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrators">
+        <PropertyRef Name="ManagerID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Billinfo__OrderI__1ED998B2">
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="0..1" />
+    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orderinfo">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Billinfo">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goodstype__Pid__145C0A3F">
+    <End Role="Goodstype" Type="Self.Goodstype" Multiplicity="0..1" />
+    <End Role="Goodstype1" Type="Self.Goodstype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goodstype">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Goodstype1">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Shopingin__TyIpe__173876EA">
+    <End Role="Goodstype" Type="Self.Goodstype" Multiplicity="0..1" />
+    <End Role="Shopinginfo" Type="Self.Shopinginfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goodstype">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Shopinginfo">
+        <PropertyRef Name="TyIpeD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderinfo__Goods__1B0907CE">
+    <End Role="Shopinginfo" Type="Self.Shopinginfo" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shopinginfo">
+        <PropertyRef Name="GoodsID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="GoodsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderinfo__UserI__1A14E395">
+    <End Role="Useerinfo" Type="Self.Useerinfo" Multiplicity="0..1" />
+    <End Role="Orderinfo" Type="Self.Orderinfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Useerinfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Orderinfo">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GreenMallEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrators" EntityType="Self.Administrators" />
+    <EntitySet Name="Billinfo" EntityType="Self.Billinfo" />
+    <EntitySet Name="Goodstype" EntityType="Self.Goodstype" />
+    <EntitySet Name="Orderinfo" EntityType="Self.Orderinfo" />
+    <EntitySet Name="Recordsinfo" EntityType="Self.Recordsinfo" />
+    <EntitySet Name="Shopinginfo" EntityType="Self.Shopinginfo" />
+    <EntitySet Name="Useerinfo" EntityType="Self.Useerinfo" />
+    <AssociationSet Name="FK__Orderinfo__Manag__1BFD2C07" Association="Self.FK__Orderinfo__Manag__1BFD2C07">
+      <End Role="Administrators" EntitySet="Administrators" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Billinfo__OrderI__1ED998B2" Association="Self.FK__Billinfo__OrderI__1ED998B2">
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+      <End Role="Billinfo" EntitySet="Billinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goodstype__Pid__145C0A3F" Association="Self.FK__Goodstype__Pid__145C0A3F">
+      <End Role="Goodstype" EntitySet="Goodstype" />
+      <End Role="Goodstype1" EntitySet="Goodstype" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Shopingin__TyIpe__173876EA" Association="Self.FK__Shopingin__TyIpe__173876EA">
+      <End Role="Goodstype" EntitySet="Goodstype" />
+      <End Role="Shopinginfo" EntitySet="Shopinginfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderinfo__Goods__1B0907CE" Association="Self.FK__Orderinfo__Goods__1B0907CE">
+      <End Role="Shopinginfo" EntitySet="Shopinginfo" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderinfo__UserI__1A14E395" Association="Self.FK__Orderinfo__UserI__1A14E395">
+      <End Role="Useerinfo" EntitySet="Useerinfo" />
+      <End Role="Orderinfo" EntitySet="Orderinfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GreenMallModelStoreContainer" CdmEntityContainer="GreenMallEntities">
+    <EntitySetMapping Name="Administrators">
+      <EntityTypeMapping TypeName="GreenMallModel.Administrators">
+        <MappingFragment StoreEntitySet="Administrators">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+          <ScalarProperty Name="Managernumber" ColumnName="Managernumber" />
+          <ScalarProperty Name="Managerloginnuber" ColumnName="Managerloginnuber" />
+          <ScalarProperty Name="ManagerrPwd" ColumnName="ManagerrPwd" />
+          <ScalarProperty Name="ManagerEmail" ColumnName="ManagerEmail" />
+          <ScalarProperty Name="Managerphoto" ColumnName="Managerphoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Billinfo">
+      <EntityTypeMapping TypeName="GreenMallModel.Billinfo">
+        <MappingFragment StoreEntitySet="Billinfo">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="BusinessPrice" ColumnName="BusinessPrice" />
+          <ScalarProperty Name="Profits" ColumnName="Profits" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goodstype">
+      <EntityTypeMapping TypeName="GreenMallModel.Goodstype">
+        <MappingFragment StoreEntitySet="Goodstype">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Typename" ColumnName="Typename" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orderinfo">
+      <EntityTypeMapping TypeName="GreenMallModel.Orderinfo">
+        <MappingFragment StoreEntitySet="Orderinfo">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="Ordertime" ColumnName="Ordertime" />
+          <ScalarProperty Name="Oderstate" ColumnName="Oderstate" />
+          <ScalarProperty Name="Payable" ColumnName="Payable" />
+          <ScalarProperty Name="Hnrb" ColumnName="Hnrb" />
+          <ScalarProperty Name="Tobepaid" ColumnName="Tobepaid" />
+          <ScalarProperty Name="Paymentmethod" ColumnName="Paymentmethod" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recordsinfo">
+      <EntityTypeMapping TypeName="GreenMallModel.Recordsinfo">
+        <MappingFragment StoreEntitySet="Recordsinfo">
+          <ScalarProperty Name="Merchantsid" ColumnName="Merchantsid" />
+          <ScalarProperty Name="MerchantsName" ColumnName="MerchantsName" />
+          <ScalarProperty Name="MerchantsType" ColumnName="MerchantsType" />
+          <ScalarProperty Name="MerchantsPhon" ColumnName="MerchantsPhon" />
+          <ScalarProperty Name="MerPlantingShoping" ColumnName="MerPlantingShoping" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shopinginfo">
+      <EntityTypeMapping TypeName="GreenMallModel.Shopinginfo">
+        <MappingFragment StoreEntitySet="Shopinginfo">
+          <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="GoodsPicLarge" ColumnName="GoodsPicLarge" />
+          <ScalarProperty Name="GoodsPPicSmall" ColumnName="GoodsPPicSmall" />
+          <ScalarProperty Name="GoodsVideo" ColumnName="GoodsVideo" />
+          <ScalarProperty Name="TyIpeD" ColumnName="TyIpeD" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Useerinfo">
+      <EntityTypeMapping TypeName="GreenMallModel.Useerinfo">
+        <MappingFragment StoreEntitySet="Useerinfo">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Usernumber" ColumnName="Usernumber" />
+          <ScalarProperty Name="Userloginnuber" ColumnName="Userloginnuber" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="Userphoto" ColumnName="Userphoto" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using GreenMall.Models
+@model List<Shopinginfo>
+@{
+
+}
+
+@*<div class="panel" style="padding-left:2em;">
+        @foreach (var item in ViewBag.typlistt as List<Goodstype>)
+        {
+
+            <a href="/liulaninfo/Index?typeID=@item.ID" class="btn btn-link">
+                @item.Typename
+            </a>
+
+        }
+
+    </div>*@
+
+
+@*<div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/@item.GoodsPicLarge" alt="..." style="height:250px;">
+                    <div class="caption">
+                        <p>参考单价：</p>
+                        <h3>@string.Format("{0:C}", item.Price) 左右</h3>
+
+                        <p>@item.GoodsName</p>
+                        <p><a href="#" class="btn btn-danger" role="button" onclick="Addcart(@item.GoodsID)">查看详情</a> <a href="#" class="btn btn-success" role="button">填写订单</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>*@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <h3>类型</h3>
+
+            <ul class="nav nav-pills nav-stacked">
+
+                @foreach (var item in ViewBag.typlistt as List<Goodstype>)
+                {
+
+                    <li id="licss" class="active " style="width:100%;">
+                        <a href="/liulaninfo/Index?typeID=@item.ID" class="btn btn-link">
+                            @item.Typename
+                        </a>
+                    </li>
+
+                }
+            </ul>
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        <div class="col-sm-10">
+            <h3>苗区</h3>
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-10 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/Images/@item.GoodsPicLarge" alt="..." style="height:200px;">
+                        <div class="caption">
+                            <p>参考单价：</p>
+                            <h3>@string.Format("{0:C}", item.Price) 左右</h3>
+
+                            <p>@item.GoodsName</p>
+                            <p><a href="#" class="btn btn-danger" role="button" onclick="Addcart(@item.GoodsID)">查看详情</a> <a href="#" class="btn btn-success" role="button">填写订单</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+    </div>
+</div>
+<p style="height:10px"></p>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <p>底部内容</p>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+      
+    </script>
+    }
