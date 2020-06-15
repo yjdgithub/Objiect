@@ -1,0 +1,56 @@
+﻿
+@{
+     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+
+@using GreenMall.Models
+@{ 
+    List<Orderinfo> orms = ViewBag.order;
+}
+<!DOCTYPE html>
+    <div class="container">
+        <ul class="breadcrumb">
+            <li class="active">待处理订单</li>
+        </ul>
+        <table class="table table-condensed table-hover " style="width:100%">
+            <tr>
+                <th>订单编号</th>
+                <th>客户姓名</th>
+                <th>联系电话</th>
+                <th>商品名称</th>
+                <th>商品数量</th>
+                <th>下单时间</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+            @foreach (var item in orms)
+            {
+                <tr>
+                    <td>@item.OrderID</td>
+                    
+                    <td>@item.Useerinfo.UserName</td>
+                    <td>@item.Useerinfo.Usernumber</td>
+                    <td>
+                        @if (item.GoodsName == null)
+                        {
+                            @item.Shopinginfo.GoodsName
+                        }
+                        else
+                        {
+                            @item.GoodsName<label style="color:red">手填订单</label>
+                        }
+
+                    </td>
+                    <td>@item.GoodsNumber（棵）</td>
+                    <td>@item.Ordertime</td>
+                    <td title="@item.Notes">@item.Notes</td>
+                    <td>
+                        <a href="/Horder/orderchuli?id=@item.OrderID"class="btn btn-danger">处理</a>
+                       
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+

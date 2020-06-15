@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+@using GreenMall.Models
+@model List<Shopinginfo>
+<div class="container">
+    <ul class="breadcrumb">
+        <li class="active">商品管理</li>
+    </ul>
+    <div class="row">
+        <div class="col-lg-8">
+            <a href="/Hshoping/Add" class="btn btn-primary ">添加产品+</a>
+        </div>
+        <div class="col-lg-4">
+            <form action="/Hshoping/Index" method="post" id="form2">
+                <div class="input-group">
+                    <input type="text" name="GoodsName" placeholder="请输入品种" class="form-control" value="@ViewBag.GoodsName" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="tijiao">查询</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-condensed table-hover " style="width:100%">
+        <tr>
+            <th>商品编号</th>
+            <th>商品图片</th>
+            <th>商品名称</th>
+            <th>商品类型</th>
+            <th>参考价格</th>
+            <th>添加时间</th>
+            <th>详情图片</th>
+            <th>展示视频</th>
+            <th>操作</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GoodsID</td>
+                <td>
+                <img src="~/Content/Images/@item.GoodsPicLarge" style="height:30px;"/>
+                </td>
+                <td>@item.GoodsName</td>
+                <td>
+
+                    @if (item.TyIpeD == 1)
+                    {
+                        @:水植
+                    }
+                    else if (item.TyIpeD == 2)
+                    {
+                        @:盆栽
+                    }
+                    else if (item.TyIpeD == 3)
+                    {
+                        @:地苗
+                    }
+
+                </td>
+                <td>@item.Price</td>
+                <td>@item.AddTime</td>
+                <td>@item.GoodsPPicSmall</td>
+                <td>@item.GoodsVideo</td>
+                <td>
+                    <a href="/Hshoping/Hshopdelet?id=@item.GoodsID" style="color:red;" onclick="return confirm('确认删除吗？')">删除</a>
+                    <a href="/Houtai/Update?id=@item.GoodsID">修改</a>
+                    <a href="/Houtai/Xianqing?id=@item.GoodsID ">详情</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script type="text/javascript">
+   
+    $("#tijiao").click(function () {
+        $("#form2").submit()
+    })
+</script>
+

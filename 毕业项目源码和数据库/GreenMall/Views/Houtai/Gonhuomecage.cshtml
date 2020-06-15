@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Gonhuomecage";
+    Layout = "~/Views/Shared/houtai.cshtml";
+
+}
+
+@using GreenMall.Models
+@model List<Recordsinfo>
+<div class="container">
+    <ul class="breadcrumb">
+    
+        <li class="active">供货商管理</li>
+    </ul>
+    <div class="row">
+        <div class="col-lg-8">
+            <a href="" class="btn btn-primary " data-target=" #myModal" data-toggle="modal">录入信息+</a>
+            @*<button class="btn btn-primary btn-lg"  data-target="#myModal">录入信息</button>*@
+        </div>
+        <div class="col-lg-4">
+            <form action="/Houtai/Gonhuomecage" method="post" id="form2">
+                <div class="input-group">
+                    <input type="text" name="MerPlantingShoping" placeholder="请输入品种" class="form-control"value="@ViewBag.MerPlantingShoping"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="tijiao">查询</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <table class="table table-condensed table-hover " style="width:100%">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>类型</th>
+            <th>电话</th>
+            <th>种植品种</th>
+            <th>操作</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Merchantsid</td>
+                <td>@item.MerchantsName</td>
+                <td>
+
+                    @if (@item.MerchantsType == 1)
+                    {
+                        @:大种植户
+                    }
+                    else if (@item.MerchantsType == 2)
+                    {
+                        @:小种植户
+                    }
+
+                </td>
+                <td>@item.MerchantsPhon</td>
+                <td style="width:0%">@item.MerPlantingShoping</td>
+                <td>
+                    <a href="/Houtai/GonhuomecageDelet?id=@item.Merchantsid" class="btn btn-danger" onclick="return confirm('确认删除吗？')">删除</a>
+                    <a href="/Houtai/Update?id=@item.Merchantsid" class="btn btn-warning">修改</a>
+                    <a href="/Houtai/Xianqing?id=@item.Merchantsid " class="btn btn-success">详情</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<!-- 模态框（Modal）新增信息 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">信息录入</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/Houtai/AddGonhuoms" method="post" id="form1">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p class="form-group">
+                                <label>姓名：</label>
+                                <input type="text" name="MerchantsName" class="form-control" />
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="form-group">
+                                <label>电话：</label>
+                                <input type="text" name="MerchantsPhon" class="form-control" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="form-group" style="margin-top:3em">
+                        <label>品种：</label><br />
+                        <textarea rows="3" cols="200" name="MerPlantingShoping">
+
+                        </textarea>
+                    </p>
+                    <p class="form-group">
+                        <label>类型：</label>
+                        <select name="MerchantsType" class="form-control">
+                            <option>==请选择类型==</option>
+                            <option value="1">大种植户</option>
+                            <option value="2">小种植户</option>
+                        </select>
+                    </p>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="Seve">提交</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        $("#Seve").click(function () {
+            $("#form1").submit()
+        })
+        $("#tijiao").click(function () {
+            $("#form2").submit()
+        })
+    </script>
+    
+   

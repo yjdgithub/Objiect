@@ -36,6 +36,7 @@
     <EntitySetMapping Name="Orderinfo">
       <EntityTypeMapping TypeName="GreenMallModel.Orderinfo">
         <MappingFragment StoreEntitySet="Orderinfo">
+          <ScalarProperty Name="GoodsNumber" ColumnName="GoodsNumber" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />

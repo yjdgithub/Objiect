@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GreenMallModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GreenMallModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrators">
           <Key>
             <PropertyRef Name="ManagerID" />
@@ -50,6 +50,7 @@
           <Property Name="Tobepaid" Type="money" />
           <Property Name="Paymentmethod" Type="nvarchar" MaxLength="10" />
           <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+          <Property Name="GoodsNumber" Type="int" />
         </EntityType>
         <EntityType Name="Recordsinfo">
           <Key>
@@ -191,8 +192,7 @@
             <End Role="Shopinginfo" EntitySet="Shopinginfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GreenMallModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -250,6 +250,7 @@
           <NavigationProperty Name="Billinfo" Relationship="Self.FK__Billinfo__OrderI__1ED998B2" FromRole="Orderinfo" ToRole="Billinfo" />
           <NavigationProperty Name="Shopinginfo" Relationship="Self.FK__Orderinfo__Goods__1B0907CE" FromRole="Orderinfo" ToRole="Shopinginfo" />
           <NavigationProperty Name="Useerinfo" Relationship="Self.FK__Orderinfo__UserI__1A14E395" FromRole="Orderinfo" ToRole="Useerinfo" />
+          <Property Name="GoodsNumber" Type="Int32" />
         </EntityType>
         <EntityType Name="Recordsinfo">
           <Key>
@@ -435,6 +436,7 @@
           <EntitySetMapping Name="Orderinfo">
             <EntityTypeMapping TypeName="GreenMallModel.Orderinfo">
               <MappingFragment StoreEntitySet="Orderinfo">
+                <ScalarProperty Name="GoodsNumber" ColumnName="GoodsNumber" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />

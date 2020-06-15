@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Xianqing";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+
+@using GreenMall.Models
+@{
+    Recordsinfo re = ViewBag.re;
+}
+<div class="container">
+    <ul class="breadcrumb">
+        <li class="active">供货商管理</li>
+    </ul>
+    <form action="/Houtai/Update" method="post" id="form1">
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="form-group">
+                    <label>姓名：</label>
+                    <input type="text" name="MerchantsName" class="form-control" value="@re.MerchantsName" readonly="readonly"/>
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <p class="form-group">
+                    <label>电话：</label>
+                    <input type="text" name="MerchantsPhon" class="form-control" value="@re.MerchantsPhon" readonly="readonly"/>
+                </p>
+            </div>
+        </div>
+
+        <p class="form-group" style="margin-top:3em">
+            <label>品种：</label><br />
+               <textarea rows="3" cols="200" name="MerPlantingShoping" readonly="readonly">
+                @re.MerPlantingShoping
+                 </textarea>
+        </p>
+        <p class="form-group">
+            <label>类型：</label>
+            <select name="MerchantsType" class="form-control" >
+               
+                @if (re.MerchantsType == 1)
+                {
+                    <option value="1" selected="selected">大种植户</option>
+                   
+                }
+                else
+                {
+                  
+                    <option value="2" selected="selected">小种植户</option>
+                }
+
+
+            </select>
+        </p>
+        <p class="form-group">
+            <a href="javascript:history.back(-1)" class="btn btn-primary">返回</a>
+        </p>
+    </form>
+</div>
+
+
+

@@ -32,6 +32,7 @@ namespace GreenMall.Models
         public Nullable<decimal> Tobepaid { get; set; }
         public string Paymentmethod { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> GoodsNumber { get; set; }
     
         public virtual Administrators Administrators { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

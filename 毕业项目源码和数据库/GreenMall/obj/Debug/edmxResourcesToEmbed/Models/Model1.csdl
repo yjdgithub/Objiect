@@ -54,6 +54,7 @@
     <NavigationProperty Name="Billinfo" Relationship="Self.FK__Billinfo__OrderI__1ED998B2" FromRole="Orderinfo" ToRole="Billinfo" />
     <NavigationProperty Name="Shopinginfo" Relationship="Self.FK__Orderinfo__Goods__1B0907CE" FromRole="Orderinfo" ToRole="Shopinginfo" />
     <NavigationProperty Name="Useerinfo" Relationship="Self.FK__Orderinfo__UserI__1A14E395" FromRole="Orderinfo" ToRole="Useerinfo" />
+    <Property Name="GoodsNumber" Type="Int32" />
   </EntityType>
   <EntityType Name="Recordsinfo">
     <Key>

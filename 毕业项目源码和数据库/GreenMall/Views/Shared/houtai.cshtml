@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="/Content/left-side-menu.css">
+    <link rel="stylesheet" type="text/css" href="/Content/iconfont.css">
+    <script src="/Scripts/jq.min.js"></script>
+    <script src="/Scripts/jq.slimscroll.min.js"></script>
+    <script type="text/javascript" src="/Scripts/left-side-menu.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style type="text/css">
+        #font {
+            font-size:1.5em;
+           
+        }
+        #mgleft {
+            padding-left:1.5em;
+        }
+    </style>
+
+</head>
+<body>
+
+    @*<div id="topbox">
+        <div class="flex_1" _>
+            <p class="content">
+                <img src="~/Content/Images/动态logn.gif" style="height: 60px;margin-top: 0.5em;border-radius: 10%;" />
+                <span style="font: 2em; color: whitesmoke; margin-top: -0.2em;">绿化商城后台管理系统</span>
+            </p>
+
+        </div>
+        <div class="flex_1"></div>
+        <div class="flex_1">
+            <p class="content1">
+                <img src="~/Content/Images/4.jpg" style="height:60px ; width: 60px; border: 1PX solid white; border-radius: 50%;" />
+                &#160<label style="color: white;margin-top: -0.5em;">欢迎管理员xxx</label>
+                <label style="width: 8em;"></label>
+                <label style="color: gray;">登录/</label>
+                <label style="color: gray;">注销</label>
+            </p>
+        </div>
+    </div>*@
+    <div class="row " style="background-color:#3b3e47; line-height:5em;">
+        
+        <div class="col-lg-4" id="mgleft">
+            <div id="mgleft">
+                <div ></div>
+                <img src="~/Content/Images/动态logn.gif" style="height: 3.5em;margin-top: 0.5em;border-radius: 10%;" />
+                <span style="color: whitesmoke;"id="font">绿化商城后台管理系统</span>
+            </div>
+            
+        </div>
+            <div class="col-lg-2">
+               
+            </div>
+        
+            <div class="col-lg-4">
+                <img src="~/Content/Images/4.jpg" style="height:4em ; width: 4em; border: 1PX solid white; border-radius: 50%;" />
+                &#160<label style="color: white;">欢迎管理员xxx</label>
+            </div>
+            <div class="col-lg-1">
+                <label style="color: gray;">登录/</label>
+                <label style="color: gray;">注销</label>
+            </div>
+        </div>
+        <div id="rowbox">
+            <div id="left_rowbox">
+                <div class="left-side-menu">
+                    <div class="lsm-expand-btn">
+                        <div class="lsm-mini-btn">
+                            @*<label>
+                            <input type="checkbox" checked="checked">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="30" />
+                                <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55" />
+                                <path class="line--2" d="M0 50h80" />
+                                <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45" />
+                            </svg>
+                            </label>*@
+
+                        </div>
+                        <!--        <input type="text"/>-->
+
+                    </div>
+                    <div class="lsm-container">
+                        <div class="lsm-scroll">
+                            <div class="lsm-sidebar">
+                                <ul>
+
+                                    <li class="lsm-sidebar-item">
+                                        <a href="/Hshoping/Index" style="text-decoration: none;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-home"></label></span><i class="  my-icon lsm-sidebar-icon "></i><span>商品管理</span><i class="my-icon "></i></a>
+                                        <ul>
+                                            @*<li><a href="/Hshoping/Index"><span>产品详情</span></a></li>*@
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="lsm-sidebar-item">
+                                        <a a href="/Horder/Index" style="text-decoration: none;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-folder-open"></label></span><i class=" my-icon lsm-sidebar-icon  "></i><span>待处理订单</span>&#160<i class="my-icon " style="color:white;width:10px;background-color:red;border-radius:50%">@ViewBag.cunt</i></a>
+
+                                    </li>
+                                    <li class="lsm-sidebar-item">
+                                        <a a href="/Horder/Yichuliorder" style="text-decoration: none;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-check"></label></span><i class=" my-icon lsm-sidebar-icon  "></i><span>已处理订单</span>&#160<i class="my-icon " ></i></a>
+
+                                    </li>
+                                    <li class="lsm-sidebar-item">
+                                        <a href="javascript:;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-align-left"></label></span><i class="  my-icon lsm-sidebar-icon "></i><span>售后管理</span><i class="my-icon lsm-sidebar-more"></i></a>
+                                        <ul>
+                                            <li><a href="javascript:;"><span>销售情况</span></a></li>
+                                            <li><a href="javascript:;"><span>销售记录</span></a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="lsm-sidebar-item">
+                                        <a href="/Houtai/Gonhuomecage " style="text-decoration: none;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-retweet"></label></span><i class=" my-icon lsm-sidebar-icon "></i><span>供货商管理</span><i class="my-icon "></i></a>
+                                        @*<ul>
+                <li><a href="javascript:;"><span>商家信息录入</span></a></li>
+                <li><a href="javascript:;"><span>商家信息情况</span></a></li>
+            </ul>*@
+                                    </li>
+                                    <li class="lsm-sidebar-item">
+                                        <a href="javascript:;"><span id="colors" style="margin-left:1em"><label class="glyphicon glyphicon-user"></label></span><i class=" my-icon lsm-sidebar-icon "></i><span>个人信息管理</span><i class="my-icon lsm-sidebar-more"></i></a>
+                                        <ul>
+                                            <li><a href="javascript:;"><span>个人信息设置</span></a></li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="right_rowbox">
+                @RenderBody()
+            </div>
+        </div>
+
+
+</body>
+</html>

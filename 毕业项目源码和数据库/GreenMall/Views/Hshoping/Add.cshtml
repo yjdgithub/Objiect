@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+@using GreenMall.Models
+@model List<Goodstype>
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/Hshoping/Index">商品管理</a></li>
+            <li class="active">添加产品</li>
+        </ul>
+        <form action="/Hshoping/Add" method="post">
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="form-group">
+                        <label>商品名：</label>
+                        <input type="text" name="GoodsName" class="form-control" />
+                    </p>
+                    <p class="form-group">
+                        <label>商品类型：</label>
+                        <select class="form-control" name="TyIpeD">
+                            <option>==请选择类型==</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.ID">@item.Typename</option>
+
+                            }
+                        </select>
+                    </p>
+                    <p class="form-group">
+                        <label>预估单价：</label>
+                        <input type="text" name="Price" class="form-control" />
+                    </p>
+                    <p class="form-group">
+
+                        <input type="submit" value="提交" class="btn btn-success" />
+                        <a href="javascript:history.back(-1)" class="btn btn-primary">返回</a>
+                    </p>
+
+                </div>
+                <div class="col-lg-6">
+                    
+                    <p class="form-group">
+                        <label>商品展示图片上传：</label>
+                        <input type="file" name="GoodsPicLarge" />
+                    </p>
+                    <p class="form-group">
+                        <label>商品详情图片上传：</label>
+                        <input type="file" name="GoodsPPicSmall"/>
+                    </p>
+                    <p class="form-group">
+                        <label>视频文件上传：</label>
+                        <input type="file" name="GoodsVideo" />
+                    </p>
+
+                </div>
+
+            </div>
+            
+        </form>
+
+    </div>
+

@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "orderchuli";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+@using GreenMall.Models
+@{ 
+    Orderinfo order = ViewBag.order;
+}
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/Horder/Index">待处理订单</a></li>
+            <li class="active">处理订单</li>
+        </ul>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>
+                    <img src="~/Content/Images/@order.Useerinfo.Userphoto" style="width:6em;height:6em;" />
+                </p>
+                <p>客户姓名:    @order.Useerinfo.UserName</p>
+                <p>联系电话:    @order.Useerinfo.Usernumber</p>
+            </div>
+            <div class="col-lg-6">
+                <p>商品名称:    @order.Shopinginfo.GoodsName</p>
+                <p >商品数量:   <span style="color:red;">@order.GoodsNumber</span>(棵)</p>
+                <p>下单时间:    @order.Ordertime</p>
+                <p>备注:    <span style="color:red;">@order.Notes</span> </p>
+                <p>单号:   @order.OrderID</p>
+            </div>
+        </div>
+        <hr style="width:100%;"/>
+        <form action="/Horder/orderAjaxchuli" method="post">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>
+                        <label>应付总额：</label>
+                        <input type="text" name="Payable" id="Payable" class="form-control" />
+                    </p>
+                    <p>
+                        <label>待付金额：</label>
+                        <input type="text" name="Tobepaid" id="Tobepaid" class="form-control" />
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        <label>实付金额：</label>
+                        <input type="text" name="Hnrb" id="Hnrb" class="form-control" />
+                    </p>
+                    <p>
+                        <label>支付方式：</label>
+                        <input type="text" name="Paymentmethod" id="fs" class="form-control" />
+                    </p>
+                    
+                </div>
+            </div>
+            <hr style="width:100%;" />
+            <p class="form-group">
+                
+                 <input type="button"  value="提交处理" id="submit" class="btn btn-success" onclick="tijiao()"/>
+                 <a href="javascript:history.back(-1)" class="btn btn-primary" >返回</a>
+</p>
+        </form>
+       
+    </div>
+<script type="text/javascript">
+   function tijiao() {
+       
+        //获取输入框内容
+        var yinfu = $("#Payable").val();
+        var Daifu = $("#Tobepaid").val();
+        var shifu = $("#Hnrb").val();
+       var zhifufanshi = $("#fs").val();
+      
+        $.ajax({
+                type: "post",
+                url: "/Horder/orderAjaxchuli",
+                data: {
+                    orderID:@order.OrderID,
+                    yinfu: yinfu,
+                    Daifu: Daifu,
+                    shifu: shifu,
+                    zhifufanshi:zhifufanshi
+                }
+          
+        });
+    };
+       
+</script>

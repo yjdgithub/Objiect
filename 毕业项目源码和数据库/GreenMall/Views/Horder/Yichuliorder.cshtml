@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Yichuliorder";
+    Layout = "~/Views/Shared/houtai.cshtml";
+}
+
+<!DOCTYPE html>
+
+@using GreenMall.Models
+@{
+    List<Orderinfo> orms = ViewBag.order;
+}
+<div class="container">
+    <ul class="breadcrumb">
+        <li class="active">已处理订单</li>
+    </ul>
+    <table class="table table-condensed table-hover " style="width:100%">
+        <tr>
+            <th>订单编号</th>
+            <th>客户姓名</th>
+            <th>联系电话</th>
+            <th>商品名称</th>
+            <th>商品数量</th>
+            <th>支付时间</th>
+            <th>应付</th>
+            <th>实付</th>
+            <th>待付</th>
+            <th>支付方式</th>
+            <th>处理人</th>
+            <th>状态</th>
+        </tr>
+        @foreach (var item in orms)
+        {
+            <tr>
+                <td>@item.OrderID</td>
+
+                <td>@item.Useerinfo.UserName</td>
+                <td>@item.Useerinfo.Usernumber</td>
+                <td>
+                    @if (item.GoodsName == null)
+                    {
+                        @item.Shopinginfo.GoodsName
+                    }
+                    else
+                    {
+                        @item.GoodsName<br/><label style="color:red">手填订单</label>
+                    }
+
+                </td>
+                <td>@item.GoodsNumber</td>
+                <td title="@item.Ordertime">@item.Ordertime</td>
+                <td>@string.Format("{0:C}", item.Payable)</td>
+                <td >@string.Format("{0:C}",item.Hnrb)</td>
+                <td >@string.Format("{0:C}",item.Tobepaid)</td>
+                <td >@item.Paymentmethod</td>
+                 <td>@item.Administrators.ManagerName</td>
+                <td>
+                   <p style="border:2px dashed red; width:5em;height:1.5em;color:red;text-align:center;line-height:1.2em"class="row">已处理</p>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

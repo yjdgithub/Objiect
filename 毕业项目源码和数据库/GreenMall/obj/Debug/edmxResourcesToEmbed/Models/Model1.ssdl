@@ -45,6 +45,7 @@
     <Property Name="Tobepaid" Type="money" />
     <Property Name="Paymentmethod" Type="nvarchar" MaxLength="10" />
     <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+    <Property Name="GoodsNumber" Type="int" />
   </EntityType>
   <EntityType Name="Recordsinfo">
     <Key>
